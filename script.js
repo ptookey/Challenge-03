@@ -30,8 +30,9 @@ function writePassword() {
  
   while (lengthChoice<8||lengthChoice>128){
     lengthChoice = prompt("How many characters do you want your character to be? (Between 8 and 128)");
-    if (lengthChoice<8||lengthChoice>128){
+    if (!(lengthChoice>=8||lengthChoice<=128)){
       alert("Please select a number between 8 and 128");
+      lengthChoice = 0
     }
   };
   
