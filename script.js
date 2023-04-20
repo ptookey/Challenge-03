@@ -1,12 +1,9 @@
-// Assignment Code
 var generateBtn = document.querySelector("#generate");
 var letters = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
 var numbers = ["0","1","2","3","4","5","6","7","8","9"];
 var special = ['"'," ","!","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","]","^","_","`","{","|","}","~",];
 var lowercase = letters.split(" ");
 var uppercase = letters.toUpperCase().split(" ");
-
-//console.log(numbers,special,lowercase,uppercase);
 
 function getRandomNumber(min, max) {
   var randomNumber=Math.random() // Random number between 0 and 0.99
@@ -21,41 +18,52 @@ function getRandomValueFromArray(array) {
   return array[randomArrayPosition];
 }
 
-// Write password to the #password input
 function writePassword() {
-  var passwordArray = []
-  var password = ""
-  var lengthChoice = prompt("How many characters do you want your character to be? (Between 8 and 128)")
-  var lowercaseChoice = prompt("Do you want lowercase letters, Yes or No?");
-  var uppercaseChoice = prompt("Do you want uppercase letters, Yes or No?");
-  var numericChoice = prompt("Do you want numeric charcters, Yes or No?");
-  var specialChoice = prompt("Do you want Special Characters, Yes or No?");
+  var passwordArray = [];
+  var password = "";
+  var lengthChoice = 0;
+  var lowercaseChoice = "";
+  var uppercaseChoice = "";
+  var numericChoice = "";
+  var specialChoice = "";
+  
+ 
+  while (lengthChoice<8||lengthChoice>128){
+    lengthChoice = prompt("How many characters do you want your character to be? (Between 8 and 128)");
+    if (lengthChoice<8||lengthChoice>128){
+      alert("Please select a number between 8 and 128");
+    }
+  };
+  
+  lowercaseChoice = confirm("Do you want lowercase letters in your password?");
+  uppercaseChoice = confirm("Do you want uppercase letters in your password?");
+  numericChoice = confirm("Do you want numbers in your password?");
+  specialChoice = confirm("Do you want special characters in your password?");
 
-  if(lowercaseChoice==="Yes") {
+  if(lowercaseChoice) {
     passwordArray = passwordArray.concat(lowercase);
-  }
-  if(uppercaseChoice==="Yes") {
+  };
+  if(uppercaseChoice) {
     passwordArray = passwordArray.concat(uppercase);
-  }
-  if(numericChoice==="Yes") {
+  };
+  if(numericChoice) {
     passwordArray = passwordArray.concat(numbers);
-  }
-  if(specialChoice==="Yes") {
+  };
+  if(specialChoice) {
     passwordArray = passwordArray.concat(special);
-  }
-  console.log(passwordArray);
+  };
 
-  for (let i = 0; i < lengthChoice; i++) {
-    password = password+getRandomValueFromArray(passwordArray);
-  }
+  if((!lowercaseChoice&&!uppercaseChoice&&!numericChoice&&!specialChoice)){
+    alert("You must select at least one character choice");
+  } else {
+    for (let i = 0; i < lengthChoice; i++) {
+      password = password+getRandomValueFromArray(passwordArray);
+    };
+  };
+
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 
 }
 
-// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-//  var password = generatePassword();
-//  var passwordText = document.querySelector("#password");
-//  console.log(getRandomValueFromArray(lowercase),getRandomValueFromArray(uppercase),getRandomValueFromArray(numbers),getRandomValueFromArray(special));
