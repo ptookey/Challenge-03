@@ -10,4 +10,8 @@ This can be used to generate passwords for future use.
 
 ## Link to Pages
 
+[Challenge-03](https://ptookey.github.io/Challenge-03/)
+
 ## Screenshot of Page
+
+![Challenge-03](Challenge-03)
