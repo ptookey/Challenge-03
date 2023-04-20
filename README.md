@@ -14,4 +14,4 @@ This can be used to generate passwords for future use.
 
 ## Screenshot of Page
 
-![Challenge-03](Challenge-03)
+![Challenge-03](Challenge-03.png)
